@@ -1,0 +1,47 @@
+nav{
+    width: 260px;
+    background: rgba(0,0,0, 0.85);
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    box-sizing: border-box;
+    padding: 10px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    border-right: rgba(255, 255, 255, 0.85);
+    h1{
+        img{
+            height: 40px;
+            position: relative;
+            top: 8px;
+        }
+    }
+    .new-song-button{
+        background: #fa233b;
+        border: none;
+        cursor: pointer;
+        width: fit-content;
+        margin: 0 auto;
+        padding: 15px 40px;
+        border-radius: 15px;
+        font-size: 16px;
+        font-weight: normal;
+        text-decoration: none;
+    }
+    footer{
+        position: absolute;
+        bottom: 75px;
+        left: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        a{
+            text-decoration: none;
+            i{
+                margin-left: 5px;
+                transform: rotate(45deg);
+            }
+        }
+    }
+}
