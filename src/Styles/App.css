@@ -4,6 +4,10 @@
     font-family: sans-serif;
     color: rgba(255,255,255,0.85);
     font-weight: lighter;
+    text-decoration: none;
+    &::selection{
+        background: transparent;
+    }
 }
 .App{
     background: white;

@@ -5,14 +5,16 @@ import "../Styles/NavBar.css"
 export default function NavBar() {
     return (
         <nav>
-            <h1>
-                <img src={pursuit_logo} alt="Pursuit Logo"/>
-                Music
-            </h1>
+            <Link to="/">
+                <h1>
+                    <img src={pursuit_logo} alt="Pursuit Logo"/>
+                    Music
+                </h1>
+            </Link>
             <Link className="new-song-button" to="/songs/new">Add To Library</Link>
             <footer>
                 <p>By Nasheed Jeremiah</p>
-                <a target="_blank">
+                <a target="_blank" href="https://github.com/eivor9/lab-express-sql-frontend">
                     GitHub Repo
                     <i className="fa-solid fa-arrow-up"></i>
                 </a>
