@@ -40,7 +40,7 @@ export default function Index () {
                         </tr>
                     </thead>
                     <tbody>
-                        {songs.map(song => 
+                        {songs.sort((x, y) => x.id - y.id).map(song => 
                             <tr key={song.id}>
                                 <td>
                                     <img className="album-art" src={song.is_favorite ? is_favorite : album_art} alt="Album Art" />

@@ -13,7 +13,7 @@ export default function SongForm({id}) {
         name: "",
         artist: "",
         album: "",
-        time: "",
+        time: "00:00",
         is_favorite: false
     });
 
@@ -23,14 +23,16 @@ export default function SongForm({id}) {
     })
 
     useEffect(() => {
-        fetch(`${API}/songs/${id}`)
+        fetch(`${API}/songs/${id || ""}`)
         .then(response => response.json())
         .then(response => {
-            setSong(response)
-            setTime({
-                minutes: Number(response.time.split(":")[0]),
-                seconds: Number(response.time.split(":")[1])
-            })
+            if (response.id){
+                setSong(response);
+                setTime({
+                    minutes: Number(response.time.split(":")[0]),
+                    seconds: Number(response.time.split(":")[1])
+                })
+            }
         })
         .catch(error => console.error(error))
     },[]);
@@ -39,8 +41,14 @@ export default function SongForm({id}) {
         setSong({...song, [event.target.id]: event.target.value});
     };
 
-    const handleNumberChange = (event) => {
+    const handleSecondChange = (event) => {
         setTime({...time, [event.target.id]: Number(event.target.value)});
+        setSong({...song, "time": `${song.time.split(":")[0]}:${Number(event.target.value) < 10 ? "0" + Number(event.target.value) : Number(event.target.value)}`});
+    }
+
+    const handleMinuteChange = (event) => {
+        setTime({...time, [event.target.id]: Number(event.target.value)});
+        setSong({...song, "time": `${Number(event.target.value)}:${song.time.split(":")[1]}`});
     }
 
     const handleCheckbox = (event) => {
@@ -48,7 +56,8 @@ export default function SongForm({id}) {
     }
 
     const updateSong = () => {
-        console.log(JSON.stringify(song))
+        console.log(song);
+        console.log(time);
         fetch(`${API}/songs/${id}`, {
           method: "PUT",
           headers: { 'Content-Type': 'application/json' },
@@ -60,10 +69,22 @@ export default function SongForm({id}) {
         .catch((error) => console.error("bad edit form", error));
     };
 
+    const addSong = () => {
+        fetch(`${API}/songs`, {
+          method: "POST",
+          body: JSON.stringify(song),
+          headers: {"Content-Type": "application/json"}
+        })
+        .then(() => {
+            navigate(`/songs`);
+        })
+        .catch((error) => console.error("catch", error));
+    };
+
     const handleSubmit = (event) => {
+        setSong({...song, "time": `${time.minutes}:${time.seconds}`})
         event.preventDefault();
-        setSong({...song, "time": `${time.minutes}:${time.seconds < 10 ? "0" + time.seconds : time.seconds}`})
-        updateSong();
+        id ? updateSong() : addSong();
     };
 
     const handleDelete = () => {
@@ -85,24 +106,24 @@ export default function SongForm({id}) {
                 </div>
             </header>
             <label htmlFor="name">name
-                <input onChange={handleTextChange} id="name" value={song.name} type="text" />
+                <input required onChange={handleTextChange} id="name" value={song.name} type="text" />
             </label>
             <label htmlFor="artist">artist
-                <input onChange={handleTextChange} id="artist" value={song.artist} type="text" />
+                <input required onChange={handleTextChange} id="artist" value={song.artist} type="text" />
             </label>
             <label htmlFor="album">album
-                <input onChange={handleTextChange} id="album" value={song.album} type="text" />
+                <input required onChange={handleTextChange} id="album" value={song.album} type="text" />
             </label>
             <label className="time-input" htmlFor="minutes">time
-                <input onChange={handleNumberChange} min="0" max="120" id="minutes" value={time.minutes} type="number"/>
+                <input required onChange={handleMinuteChange} min="0" max="120" id="minutes" value={time.minutes} type="number"/>
                 :
-                <input onChange={handleNumberChange} min="0" max="59" id="seconds" value={time.seconds} type="number"/>      
+                <input required onChange={handleSecondChange} min="0" max="59" id="seconds" value={time.seconds} type="number"/>      
             </label>
             <label className="checkbox" htmlFor="is_favorite">favorite
                 <input onChange={handleCheckbox} id="is_favorite" checked={song.is_favorite} type="checkbox" />
             </label>
             <div className="buttons">
-                <div onClick={handleDelete} className="delete-button">Delete</div>
+                {id ? <div onClick={handleDelete} className="delete-button">Delete</div> : <div className="delete-button"></div>}
                 <span>
                     <Link to="/songs">Cancel</Link>
                     <button>OK</button>
