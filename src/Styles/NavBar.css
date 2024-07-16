@@ -1,5 +1,6 @@
 nav{
-    width: 260px;
+    min-width: 265px;
+    max-width: 256px;;
     background: rgba(0,0,0, 0.85);
     height: 100vh;
     position: sticky;
@@ -9,12 +10,13 @@ nav{
     display: flex;
     flex-direction: column;
     gap: 100px;
-    border-right: rgba(255, 255, 255, 0.85);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
     h1{
         img{
             height: 40px;
             position: relative;
-            top: 8px;
+            top: 10px;
+            margin-right: 2px;
         }
     }
     .new-song-button{
@@ -27,6 +29,7 @@ nav{
         border-radius: 15px;
         font-size: 16px;
         font-weight: normal;
+        
     }
     footer{
         position: absolute;

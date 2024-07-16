@@ -8,7 +8,7 @@ export default function NavBar() {
             <Link to="/">
                 <h1>
                     <img src={pursuit_logo} alt="Pursuit Logo"/>
-                    Music
+                    Tuner
                 </h1>
             </Link>
             <Link className="new-song-button" to="/songs/new">Add To Library</Link>

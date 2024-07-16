@@ -1,7 +1,53 @@
+import { useState, useEffect } from "react";
+
+import album_art from "../assets/album_art.png";
+import playlist_art from "../assets/playlist_art.png";
+import is_favorite from "../assets/is_favorite.png";
+import "../Styles/Index.css";
+
+const API = import.meta.env.VITE_API;
+
 export default function Index () {
+    const [songs, setSongs] = useState([]);
+
+    useEffect(() => {
+        fetch(`${API}/songs`)
+        .then(response => response.json())
+        .then(response => setSongs(response))
+        .catch(error => console.error(error))
+    },[]);
+
     return (
         <div className="Index">
-            
+            <div className="main">
+                <header>
+                    <img src={playlist_art} alt="Album Art" className="album-art" />
+                    <div className="description">
+                        <h1>Tuner Playlist</h1>
+                        <a target="_blank" href="https://pursuit.org"><h2>Pursuit</h2></a>
+                    </div>
+                </header>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Song</th>
+                            <th><span>|</span>Artist</th>
+                            <th><span>|</span>Album</th>
+                            <th><span>|</span>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {songs.map(song => 
+                            <tr key={song.id}>
+                                <td><img className="album-art" src={song.is_favorite ? is_favorite : album_art} alt="Album Art" />{song.name}</td>
+                                <td>{song.artist}</td>
+                                <td>{song.album}</td>
+                                <td>{song.time}</td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }

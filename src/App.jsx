@@ -18,7 +18,6 @@ function App() {
    <div className="App">
     <Router>
       <NavBar/>
-      <div className="main">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/hypnotize-me" element={<Loading />} />
@@ -26,8 +25,7 @@ function App() {
           <Route path="/songs/:id" element={<Show />} />
           <Route path="/songs/new" element={<New />} />
           <Route path="*" element={<FourOFour />} />
-          </Routes>
-      </div> 
+        </Routes>
     </Router>
    </div>
   )

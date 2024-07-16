@@ -1,0 +1,71 @@
+.Index{
+    background: rgba(31,31,31);
+    padding: 50px;
+    width: 100%;
+    .main{
+        max-width: 1680px;
+        min-width: 700px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 75px;
+        header{
+            display: flex;
+            gap: 50px;
+            img{
+                width: 270px;
+                border-radius: 20px;
+            }
+            .description{
+                align-self: center;
+                h1{
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                }
+                h2{
+                    color: #ff5a6d;
+                    font-size: 28px;
+                }
+            }
+        }
+        table{
+            border-spacing: 0;
+            *{
+                font-size: 13px;
+                color:rgba(255,255,255,0.5);
+            }
+            thead{
+                text-align: left;
+                th{
+                    span{
+                        position: relative;
+                        left: -10px;
+                    }
+                    &:last-of-type{
+                        width: 100px;
+                    }
+                }
+            }
+            tr{
+                height: 55px;
+                &:nth-last-of-type(even){
+                    background: rgba(255, 255, 255, 0.016);
+                }
+            }
+            td{
+                &:first-of-type{
+                    padding-left: 7px;
+                    align-self: center;
+                    display: flex;
+                    gap: 30px;
+                    align-items: center;
+                    height: inherit;
+                    .album-art{
+                        border-radius: 5px;
+                        height: 40px;
+                    }
+                }
+            }
+        }
+    }
+}
