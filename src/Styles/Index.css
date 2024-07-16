@@ -41,8 +41,11 @@
                         position: relative;
                         left: -10px;
                     }
+                    &:first-of-type{
+                        padding-left: 10px;
+                    }
                     &:last-of-type{
-                        width: 100px;
+                        width: 50px;
                     }
                 }
             }
@@ -51,10 +54,18 @@
                 &:nth-last-of-type(even){
                     background: rgba(255, 255, 255, 0.016);
                 }
+                &:hover{
+                    background: rgba(255, 255, 255, 0.05);
+                    .edit-button{
+                        color: #ff5a6d;
+                        cursor: pointer;
+                    }
+                }
             }
             td{
                 &:first-of-type{
-                    padding-left: 7px;
+                    color:rgba(255, 255, 255, 0.85);
+                    padding-left: 10px;
                     align-self: center;
                     display: flex;
                     gap: 30px;
@@ -65,6 +76,15 @@
                         height: 40px;
                     }
                 }
+            }
+            .edit-button{
+                color: transparent;
+                font-size: 18px;
+                font-weight: bold;
+                width: 25px;
+            }
+            .table-headers:hover{
+                background: transparent;
             }
         }
     }
