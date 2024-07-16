@@ -8,7 +8,6 @@ import "../Styles/Index.css";
 
 const API = import.meta.env.VITE_API;
 
-
 export default function Index () {
     const navigate = useNavigate();
     const [songs, setSongs] = useState([]);
@@ -50,7 +49,7 @@ export default function Index () {
                                 <td>{song.artist}</td>
                                 <td>{song.album}</td>
                                 <td>{song.time}</td>
-                                <td onClick={() => navigate(`/songs/${song.id}`)} className="edit-button">...</td>
+                                <td onClick={() => navigate(`/songs/${song.id}`)} className="edit-button"><span className="edit-button">...</span></td>
                             </tr>
                         )}
                     </tbody>

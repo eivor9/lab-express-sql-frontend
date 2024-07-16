@@ -1,0 +1,96 @@
+form{
+    background: rgb(29, 29, 31);
+    width: 600px;
+    height: 650px;
+    margin: auto;
+    border-radius: 15px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    header{
+        width: 600px;
+        box-sizing: border-box;
+        border-radius: 15px 15px 0px 0px;
+        background: rgba(214, 201, 201, 0.05);
+        padding: 30px;
+        display: flex;
+        gap: 10px;
+        img{
+            height: 100px;
+            border-radius: 10px;;
+        }
+        .old-details{
+            align-self: center;
+            h1{
+                font-size: 24px;
+            }
+            h2{
+                color: rgba(255, 255, 255, 0.5);
+                font-size: 16px;
+            }
+        }
+    }
+    label{
+        font-size: 14px;
+    }
+    input[type="text"]{
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        margin-left: 5px;;
+        width: 400px;
+        padding: 0 2px;
+    }
+    .checkbox{
+        margin-right: 403px;
+        input{
+            margin-left: 5px;
+            position: relative;
+            top: 2px;
+        }
+    }
+    .time-input{
+        margin-right: 290px;
+        input{
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            text-align: right;
+            margin: 0 5px;
+            width: 40px;
+            &:last-of-type{
+                width: 35px;
+            }
+        }
+    }
+    .buttons{
+        display: flex;
+        justify-content: space-between;
+        width: 520px;
+        margin-top: 225px;
+        .delete-button{
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+            cursor: default;
+        }
+        a{
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 20px;
+            border-radius: 5px;
+        }
+        button{
+            background: #fa233b;
+            padding: 2px 30px;
+            border-radius: 5px;
+            border: none;
+            font-size: 14px;
+            font-weight: normal;
+            cursor: pointer;
+        }
+        span{
+            display: flex;
+            gap: 5px;
+        }
+    }
+}

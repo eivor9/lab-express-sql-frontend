@@ -82,6 +82,11 @@
                 font-size: 18px;
                 font-weight: bold;
                 width: 25px;
+                span{
+                    position: relative;
+                    top: -3px;
+                    left: -5px;
+                }
             }
             .table-headers:hover{
                 background: transparent;
