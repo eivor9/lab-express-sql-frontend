@@ -22,7 +22,7 @@ export default function Index () {
 
     return (
         <div className="Index">
-            <div className="main">
+            {songs.length ? <div className="main">
                 <header>
                     <img src={playlist_art} alt="Album Art" className="album-art" />
                     <div className="description">
@@ -55,6 +55,14 @@ export default function Index () {
                     </tbody>
                 </table>
             </div>
+            :
+            <div className="empty">
+                <img src={album_art} alt="" />
+                <h1>Empty Libray</h1>
+                <p>To add to this playlist, click the "Add to Library" button.</p>
+            </div>
+            }
+
         </div>
     )
 }

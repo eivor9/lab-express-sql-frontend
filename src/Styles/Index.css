@@ -94,3 +94,21 @@
         }
     }
 }
+.empty{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    gap: 20px;
+    img{
+        border-radius: 15px;
+        width: 350px;
+    }
+    h1{
+        font-weight: bold;
+    }
+    }
+    p{
+        color: rgba(255, 255, 255, 0.5);
+    }
+}
