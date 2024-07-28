@@ -1,6 +1,6 @@
 import Index from "./Index";
 import "../Styles/Home.css";
-import music from "../assets/music.png"
+import music from "../assets/music.png";
 import { Link } from "react-router-dom";
 
 export default function Home () {
@@ -13,7 +13,7 @@ export default function Home () {
                     <img src={music} alt="Eigth Notes icon"/>
                     <h1>Welcome to Tuner!</h1>
                     <p>This full-stack web app enables users to seamlessly add, remove, update, and view songs from their personalized list. With a user-friendly interface, navigating through song entries is intuitive and efficient, ensuring a smooth experience for music enthusiasts. The app combines robust back-end functionality with an attractive front-end design to provide an all-encompassing solution for managing this song collection.</p>
-                    <Link to="/songs">Continue</Link>
+                    <Link to="/albums">Continue</Link>
                 </div>
             </div>
         </>

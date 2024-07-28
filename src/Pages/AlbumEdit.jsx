@@ -1,16 +1,15 @@
-import Index from "./Index";
-import SongForm from "../Components/SongForm";
+import Album from "./Album";
+import AlbumForm from "../Components/AlbumForm";
 import "../Styles/Home.css";
 import { useParams } from "react-router-dom";
 
-export default function Show () {
+export default function AlbumEdit () {
     const { id } = useParams();
-    
     return (
         <>
-            <Index/>
+            <Album/>
             <div className="continue-background">
-                <SongForm id={id}/>
+                <AlbumForm id={id}/>
             </div>
         </>
     )

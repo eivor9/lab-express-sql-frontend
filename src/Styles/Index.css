@@ -14,7 +14,7 @@
             gap: 50px;
             img{
                 width: 270px;
-                border-radius: 20px;
+                border-radius: 30px;
             }
             .description{
                 align-self: center;
@@ -45,7 +45,7 @@
                         padding-left: 10px;
                     }
                     &:last-of-type{
-                        width: 50px;
+                        width: 100px;
                     }
                 }
             }
