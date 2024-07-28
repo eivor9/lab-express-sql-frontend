@@ -1,13 +1,13 @@
 import Index from "./Index";
 import "../Styles/Home.css";
-import SongForm from "../Components/SongForm";
+import AlbumForm from "../Components/AlbumForm";
 
 export default function New () {
     return (
         <>
             <Index/>
             <div className="continue-background">
-                <SongForm/>
+                <AlbumForm/>
             </div>
         </>
     )

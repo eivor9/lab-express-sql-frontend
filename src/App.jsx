@@ -8,6 +8,7 @@ import Index from "./Pages/Index";
 import Album from "./Pages/Album";
 import AlbumEdit from "./Pages/AlbumEdit";
 import New from "./Pages/New";
+import NewSong from "./Pages/NewSong";
 import Loading from "./Components/Loading";
 import FourOFour from "./Pages/FourOFour";
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/albums" element={<Index />} />
           <Route path="/albums/:id" element={<Album />} />
           <Route path="/albums/:id/edit" element={<AlbumEdit />} />
+          <Route path="/albums/:id/songs/new" element={<NewSong />} />
           <Route path="/albums/new" element={<New />} />
           <Route path="*" element={<FourOFour />} />
         </Routes>

@@ -13,13 +13,13 @@ export default function AlbumForm({id}) {
         "name": "",
         "artist": "",
         "length_in_minutes": 0,
-        "number_of_songs": 1,
+        "number_of_songs": 0,
         "release_year": 2024,
         "genre": ""
     });
 
     useEffect(() => {
-        fetch(`${API}/songs/${id || ""}`)
+        fetch(`${API}/albums/${id || ""}`)
         .then(response => response.json())
         .then(response => {
             setAlbum(response);
@@ -31,42 +31,44 @@ export default function AlbumForm({id}) {
         setAlbum({...album, [event.target.id]: event.target.value});
     };
 
+    const handleNumberChange = (event) => {
+        setAlbum({...album, [event.target.id]: Number(event.target.value)});
+    };
+
     const updateSong = () => {
-        console.log(song);
-        console.log(time);
-        fetch(`${API}/songs/${id}`, {
+        fetch(`${API}/albums/${id}`, {
           method: "PUT",
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(song)
+          body: JSON.stringify(album)
         })
-        .then(() => {
-          navigate("/songs")
+        .then((response) => {
+            console.log(response)
+          navigate("/albums")
         })
         .catch((error) => console.error("bad edit form", error));
     };
 
     const addSong = () => {
-        fetch(`${API}/songs`, {
+        fetch(`${API}/albums`, {
           method: "POST",
-          body: JSON.stringify(song),
+          body: JSON.stringify(album),
           headers: {"Content-Type": "application/json"}
         })
         .then(() => {
-            navigate(`/songs`);
+            navigate(`/albums`);
         })
         .catch((error) => console.error("catch", error));
     };
 
     const handleSubmit = (event) => {
-        setSong({...song, "time": `${time.minutes}:${time.seconds}`})
         event.preventDefault();
         id ? updateSong() : addSong();
     };
 
     const handleDelete = () => {
-        fetch(`${API}/songs/${id}`, { method: "DELETE" })
+        fetch(`${API}/albums/${id}`, { method: "DELETE" })
         .then(() => {
-            navigate("/songs");
+            navigate("/albums");
         })
         .catch((error) => console.error(error));
     }
@@ -74,34 +76,47 @@ export default function AlbumForm({id}) {
     return (
         <form onSubmit={handleSubmit}>
             <header>
-                <img src={song.is_favorite ? is_favorite : album_art} alt="Album Art" />
+                <img src={album_art} alt="Album Art" />
                 <div className="old-details">
-                    <h1>{song.name}</h1>
-                    <h2>{song.artist}</h2>
-                    <h2>{song.album}</h2>
+                    <h1>{album.name}</h1>
+                    <h2>{album.artist}</h2>
                 </div>
             </header>
-            <label htmlFor="name">name
-                <input required onChange={handleTextChange} id="name" value={song.name} type="text" />
-            </label>
-            <label htmlFor="artist">artist
-                <input required onChange={handleTextChange} id="artist" value={song.artist} type="text" />
-            </label>
-            <label htmlFor="album">album
-                <input required onChange={handleTextChange} id="album" value={song.album} type="text" />
-            </label>
-            <label className="time-input" htmlFor="minutes">time
-                <input required onChange={handleMinuteChange} min="0" max="120" id="minutes" value={time.minutes} type="number"/>
-                :
-                <input required onChange={handleSecondChange} min="0" max="59" id="seconds" value={time.seconds} type="number"/>      
-            </label>
-            <label className="checkbox" htmlFor="is_favorite">favorite
-                <input onChange={handleCheckbox} id="is_favorite" checked={song.is_favorite} type="checkbox" />
-            </label>
+            <div className="input">
+                <label htmlFor="name">name</label>
+                <input required onChange={handleTextChange} id="name" value={album.name} type="text" />
+            </div>
+            
+            <div className="input">
+                <label htmlFor="artist">artist</label>
+                <input required onChange={handleTextChange} id="artist" value={album.artist} type="text" />
+            </div>
+
+            <div className="input">
+                <label htmlFor="genre">genre</label>
+                <input required onChange={handleTextChange} id="genre" value={album.genre} type="text" />
+            </div>
+            
+            <div className="input">
+                <label htmlFor="length_in_minutes">length</label>
+                <input required onChange={handleNumberChange} min="0" id="length_in_minutes" value={album.length_in_minutes} type="number" />
+                minutes
+            </div>
+
+            <div className="input">
+                <label htmlFor="number_of_songs"># of songs</label>
+                <input required onChange={handleNumberChange} min="0" id="number_of_songs" value={album.number_of_songs} type="number" />
+            </div>
+    
+            <div className="input">
+                <label htmlFor="release_year">year</label>
+                <input required onChange={handleNumberChange} min="-70000" max="2024" id="release_year" value={album.release_year} type="number" />
+            </div>
+            
             <div className="buttons">
                 {id ? <div onClick={handleDelete} className="delete-button">Delete</div> : <div className="delete-button"></div>}
                 <span>
-                    <Link to="/songs">Cancel</Link>
+                    <Link to="/albums">Cancel</Link>
                     <button>OK</button>
                 </span>
             </div>

@@ -23,7 +23,7 @@ export default function SongForm({id}) {
     })
 
     useEffect(() => {
-        fetch(`${API}/songs/${id || ""}`)
+        fetch(`${API}/album/${id || ""}`)
         .then(response => response.json())
         .then(response => {
             if (response.id){
@@ -105,27 +105,37 @@ export default function SongForm({id}) {
                     <h2>{song.album}</h2>
                 </div>
             </header>
-            <label htmlFor="name">name
+            <div className="input">
+                <label htmlFor="name">name</label>
                 <input required onChange={handleTextChange} id="name" value={song.name} type="text" />
-            </label>
-            <label htmlFor="artist">artist
+            </div>
+            
+            <div className="input">
+                <label htmlFor="artist">artist</label>
                 <input required onChange={handleTextChange} id="artist" value={song.artist} type="text" />
-            </label>
-            <label htmlFor="album">album
+            </div>
+            
+            <div className="input">
+                <label htmlFor="album">album</label>
                 <input required onChange={handleTextChange} id="album" value={song.album} type="text" />
-            </label>
-            <label className="time-input" htmlFor="minutes">time
+            </div>
+            
+            <div className="input">
+            <label className="time-input" htmlFor="minutes">time</label>
                 <input required onChange={handleMinuteChange} min="0" max="120" id="minutes" value={time.minutes} type="number"/>
                 :
                 <input required onChange={handleSecondChange} min="0" max="59" id="seconds" value={time.seconds} type="number"/>      
-            </label>
-            <label className="checkbox" htmlFor="is_favorite">favorite
+            </div>
+
+            <div className="input">
+                <label className="checkbox" htmlFor="is_favorite">favorite</label>
                 <input onChange={handleCheckbox} id="is_favorite" checked={song.is_favorite} type="checkbox" />
-            </label>
+            </div>
+            
             <div className="buttons">
                 {id ? <div onClick={handleDelete} className="delete-button">Delete</div> : <div className="delete-button"></div>}
                 <span>
-                    <Link to="/songs">Cancel</Link>
+                    <Link to={`/albums/${song.album_id}`}>Cancel</Link>
                     <button>OK</button>
                 </span>
             </div>
