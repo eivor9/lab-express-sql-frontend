@@ -8,6 +8,7 @@ form{
     display: flex;
     flex-direction: column;
     gap: 20px;
+    position: relative;
     header{
         width: 600px;
         box-sizing: border-box;
@@ -48,16 +49,11 @@ form{
         width: 40px;
         margin: 0;
     }
-    .checkbox{
-        margin-right: 403px;
-        input{
-            margin-left: 5px;
-            position: relative;
-            top: 2px;
-        }
+    input[type="checkbox"]{
+        position: relative;
+        top: 3px;
     }
     .time-input{
-        margin-right: 290px;
         input{
             background: transparent;
             border: 1px solid rgba(255, 255, 255, 0.5);
@@ -74,7 +70,9 @@ form{
         justify-content: space-between;
         width: 520px;
         margin: auto;
-        margin-top: 200px;
+        position: absolute;
+        bottom: 30px;
+        left:0;right:0;
         .delete-button{
             font-size: 14px;
             color: rgba(255, 255, 255, 0.5);

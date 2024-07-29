@@ -1,11 +1,8 @@
 import pursuit_logo from "../assets/pursuit_logo.svg";
-import { Link, useParams } from "react-router-dom";
-import "../Styles/NavBar.css"
+import { Link } from "react-router-dom";
+import "../Styles/NavBar.css";
 
 export default function NavBar() {
-    const currentURL = window.location.href
-    const id = Number(currentURL.split('/').pop());
-    console.log(id);
     return (
         <nav>
             <Link to="/">
@@ -14,7 +11,7 @@ export default function NavBar() {
                     Tuner
                 </h1>
             </Link>
-            <Link className="new-song-button" to={id ? `/albums/${id}/songs/new` : `/albums/new`}>Add To Library</Link>
+            <Link className="new-album-button" to={`/albums/new`}>Add To Library</Link>
             <footer>
                 <p>By Nasheed Jeremiah</p>
                 <a target="_blank" href="https://github.com/eivor9/lab-express-sql-frontend">

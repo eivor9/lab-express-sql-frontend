@@ -1,5 +1,5 @@
 // DEPENDENCIES
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import "./Styles/App.css";
 
 // PAGES
@@ -9,6 +9,7 @@ import Album from "./Pages/Album";
 import AlbumEdit from "./Pages/AlbumEdit";
 import New from "./Pages/New";
 import NewSong from "./Pages/NewSong";
+import EditSong from "./Pages/EditSong";
 import Loading from "./Components/Loading";
 import FourOFour from "./Pages/FourOFour";
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/albums/:id" element={<Album />} />
           <Route path="/albums/:id/edit" element={<AlbumEdit />} />
           <Route path="/albums/:id/songs/new" element={<NewSong />} />
+          <Route path="/albums/:id/songs/:track_no/edit" element={<EditSong />} />
           <Route path="/albums/new" element={<New />} />
           <Route path="*" element={<FourOFour />} />
         </Routes>

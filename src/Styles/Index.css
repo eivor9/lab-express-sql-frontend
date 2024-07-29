@@ -14,27 +14,36 @@
             gap: 50px;
             img{
                 width: 270px;
-                border-radius: 30px;
+                border-radius: 50px;
             }
             .description{
                 align-self: center;
                 h1{
                     font-weight: bold;
-                    margin-bottom: 10px;
+                    display: flex;
                 }
                 h2{
                     color: #ff5a6d;
                     font-size: 28px;
                 }
+                #new-song-button{
+                    color: #ff5a6d;;
+                    font-size: 40px;
+                    position: relative;
+                    top: -7px;
+                    left: 6px;
+                }
             }
         }
         table{
             border-spacing: 0;
+            cursor: default;
             *{
                 font-size: 13px;
                 color:rgba(255,255,255,0.5);
             }
             thead{
+                cursor: default;
                 text-align: left;
                 th{
                     span{
@@ -42,7 +51,7 @@
                         left: -10px;
                     }
                     &:first-of-type{
-                        padding-left: 10px;
+                        padding-left: 80px;
                     }
                     &:last-of-type{
                         width: 100px;
@@ -50,6 +59,7 @@
                 }
             }
             tr{
+                cursor: default;
                 height: 55px;
                 &:nth-last-of-type(even){
                     background: rgba(255, 255, 255, 0.016);
@@ -63,6 +73,7 @@
                 }
             }
             td{
+                cursor: pointer;
                 &:first-of-type{
                     color:rgba(255, 255, 255, 0.85);
                     padding-left: 10px;

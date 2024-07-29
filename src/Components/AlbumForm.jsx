@@ -1,15 +1,14 @@
-import is_favorite from "../assets/is_favorite.png";
 import album_art from "../assets/album_art.png";
 import "../Styles/SongForm.css";
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const API = import.meta.env.VITE_API;
 
-export default function AlbumForm({id}) {
+export default function AlbumForm({newAlbum}) {
+    const { id } = useParams();
     const navigate = useNavigate();
     const [album, setAlbum] = useState({
-        "id": null,
         "name": "",
         "artist": "",
         "length_in_minutes": 0,
@@ -18,14 +17,16 @@ export default function AlbumForm({id}) {
         "genre": ""
     });
 
-    useEffect(() => {
-        fetch(`${API}/albums/${id || ""}`)
-        .then(response => response.json())
-        .then(response => {
-            setAlbum(response);
-        })
-        .catch(error => console.error(error))
-    },[]);
+    if(!newAlbum){
+        useEffect(() => {
+            fetch(`${API}/albums/${id}`)
+            .then(response => response.json())
+            .then(response => {
+                setAlbum(response);
+            })
+            .catch(error => console.error(error))
+        },[]);
+    }
 
     const handleTextChange = (event) => {
         setAlbum({...album, [event.target.id]: event.target.value});
@@ -62,7 +63,7 @@ export default function AlbumForm({id}) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        id ? updateSong() : addSong();
+        newAlbum ? addSong() : updateSong();
     };
 
     const handleDelete = () => {
@@ -114,7 +115,7 @@ export default function AlbumForm({id}) {
             </div>
             
             <div className="buttons">
-                {id ? <div onClick={handleDelete} className="delete-button">Delete</div> : <div className="delete-button"></div>}
+                {!newAlbum ? <div onClick={handleDelete} className="delete-button">Delete</div> : <div className="delete-button"></div>}
                 <span>
                     <Link to="/albums">Cancel</Link>
                     <button>OK</button>

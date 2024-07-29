@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
 import album_art from "../assets/album_art.png";
 import playlist_art from "../assets/playlist_art.jpg";
@@ -32,7 +32,7 @@ export default function Album () {
                 <header>
                     <img src={playlist_art} alt="Album Art" className="album-art" />
                     <div className="description">
-                        <h1 onClick={() => navigate(`/albums/${album.id}`)}>{album.name}</h1>
+                        <h1>{album.name}<Link id="new-song-button" to={`/albums/${id}/songs/new`}>+</Link></h1>
                         <a style={{cursor:"pointer"}} onClick={() => navigate(`/albums`)}><h2>All Albums</h2></a>
                     </div>
                 </header>
@@ -47,7 +47,7 @@ export default function Album () {
                     </thead>
                     <tbody>
                         {songs.sort((x, y) => x.track_no - y.track_no).map(song => 
-                            <tr key={song.track_no}>
+                            <tr onClick={() => navigate(`/albums/${album.id}/songs/${song.track_no}/edit/`)} key={song.track_no}>
                                 <td>
                                     <img className="album-art" src={ song.is_favorite ? is_favorite : album_art} alt="Album Art" />
                                     {song.name}
@@ -55,7 +55,6 @@ export default function Album () {
                                 <td>{song.artist}</td>
                                 <td>{song.track_no}</td>
                                 <td>{song["length"]}</td>
-                                <td onClick={() => navigate(`/albums/${album.id}/songs/${song.track_no}/edit`)} className="edit-button"><span className="edit-button">...</span></td>
                             </tr>
                         )}
                     </tbody>

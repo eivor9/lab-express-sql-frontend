@@ -19,7 +19,7 @@ nav{
             margin-right: 2px;
         }
     }
-    .new-song-button{
+    .new-album-button{
         background: #fa233b;
         border: none;
         cursor: pointer;
@@ -29,7 +29,8 @@ nav{
         border-radius: 10px;
         font-size: 16px;
         font-weight: normal;
-        
+        position: sticky;
+        top: 50px;
     }
     footer{
         position: absolute;
